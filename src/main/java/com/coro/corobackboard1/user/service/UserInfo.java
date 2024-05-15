@@ -5,9 +5,5 @@ import javax.swing.*;
 public record UserInfo(
         String email,
         String password,
-        String userName
-) {
-
-    public static
-}
-
+        String name
+) {}

@@ -14,10 +14,11 @@ public class UserAppender {
     public Long append(UserInfo userInfo) {
 
         User user = User.builder()
-                .name(userInfo.userName())
+                .name(userInfo.name())
                 .email(userInfo.email())
                 .password(userInfo.password())
                 .build();
+        //유저 엔티티와 유저 인포를 연결하고 있음.
 
         User saved = userRepository.save(user);
         return saved.getId();

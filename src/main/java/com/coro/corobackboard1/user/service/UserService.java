@@ -11,9 +11,15 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserAppender userAppender;
+    private final UserReader userReader;
+
 
     public Long signUp(UserInfo userInfo) {
         log.info("SignUp");
         return userAppender.append(userInfo);
+    }
+
+    public UserDomain getUserInfo(Long userId) {
+        return userReader.read(userId);
     }
 }
