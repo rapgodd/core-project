@@ -1,13 +1,15 @@
 package com.coro.corobackboard1.user.entity;
 
+import com.coro.corobackboard1.user.service.UserDomain;
+import com.coro.corobackboard1.user.service.UserInfo;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
-@Builder
 @Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "users")
 public class User {
 
@@ -20,6 +22,18 @@ public class User {
     private String password;
 
     private String email;
+
+    public UserDomain toDomain() {
+        return new UserDomain(
+                id,
+                new UserInfo(
+                        email,
+                        password,
+                        name
+                )
+        );
+    }
+
 
 
 }
