@@ -20,4 +20,10 @@ public class UserReader {
          return user.toDomain();
     }
 
+    public UserDomain read(String email) {
+        User user = UserRepository.findBtEmail(email)
+                .orElseThrow(EntityNotFoundException::new);
+        return user.toDomain();
+    }
+
 }

@@ -24,8 +24,8 @@ public class UserController {
     }
 
     @GetMapping("/users/{userId}")
-    public ResponseEntity<UserResponse> userInfo(@PathVariable Long userId) {
-        UserDomain domain = userService.getUserInfo(userId);
+    public ResponseEntity<UserResponse> login(Long userId) {
+        UserDomain domain = userService.login(userId);
         UserResponse response = UserResponse.from(domain);
         return ResponseEntity.ok(response);
     }
