@@ -1,6 +1,7 @@
 package com.coro.corobackboard1.user.service;
 
 
+import com.coro.corobackboard1.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ public class UserService {
 
     private final UserAppender userAppender;
     private final UserReader userReader;
+    private final PassworldValidator;
 
 
     public Long signUp(UserInfo userInfo) {
@@ -19,7 +21,8 @@ public class UserService {
         return userAppender.append(userInfo);
     }
 
-    public UserDomain getUserInfo(Long userId) {
+    public UserDomain login(String email, String password) {
+        userReader.read(email);
         return userReader.read(userId);
     }
 }
